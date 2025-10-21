@@ -1,6 +1,7 @@
 package com.example.blogs.model.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
  * @date 2025/10/21
  */
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Article implements Serializable {
