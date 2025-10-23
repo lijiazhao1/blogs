@@ -3,6 +3,7 @@ package com.example.blogs.controller;
 
 import com.example.blogs.model.entity.User;
 import com.example.blogs.service.UserService;
+import com.example.blogs.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,53 +41,53 @@ public class UserController {
      * 用户登录
      */
     @PostMapping("/login")
-    public Map<String, Object> login(
+    public Result<User> login(
             @RequestParam String username,
             @RequestParam String password) {
         User user = userService.login(username, password);
-        Map<String, Object> result = new HashMap<>();
+        /*Map<String, Object> result = new HashMap<>();
         result.put("code", 200);
         result.put("message", "登录成功");
-        result.put("user", user);
-        return result;
+        result.put("user", user);*/
+        return Result.success(user);
     }
 
     /**
      * 获取用户信息
      */
     @GetMapping("/{id}")
-    public Map<String, Object> getUserInfo(@PathVariable Long id) {
+    public Result getUserInfo(@PathVariable Long id) {
         User user = userService.getUserById(id);
-        Map<String, Object> result = new HashMap<>();
+        /*Map<String, Object> result = new HashMap<>();
         result.put("code", 200);
-        result.put("user", user);
-        return result;
+        result.put("user", user);*/
+        return Result.success(user);
     }
 
     /**
      * 更新用户信息
      */
     @PutMapping
-    public Map<String, Object> updateUser(@RequestBody User user) {
+    public Result updateUser(@RequestBody User user) {
         userService.updateUser(user);
-        Map<String, Object> result = new HashMap<>();
+        /*Map<String, Object> result = new HashMap<>();
         result.put("code", 200);
-        result.put("message", "更新成功");
-        return result;
+        result.put("message", "更新成功");*/
+        return Result.success();
     }
 
     /**
      * 重置密码
      */
     @PutMapping("/password")
-    public Map<String, Object> resetPassword(
+    public Result resetPassword(
             @RequestParam Long id,
             @RequestParam String oldPassword,
             @RequestParam String newPassword) {
         userService.resetPassword(id, oldPassword, newPassword);
-        Map<String, Object> result = new HashMap<>();
+        /*Map<String, Object> result = new HashMap<>();
         result.put("code", 200);
-        result.put("message", "密码重置成功");
-        return result;
+        result.put("message", "密码重置成功");*/
+        return Result.success();
     }
 }
