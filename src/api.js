@@ -18,17 +18,30 @@ async function request(url, method = 'GET', data = null) {
     options.body = formData;
   }
 
-  try {
-    const response = await fetch(`${API_BASE_URL}${url}`, options);
-    const result = await response.json();
+  // try {
+  //   const response = await fetch(`${API_BASE_URL}${url}`, options);
+  //   const result = await response.json();
     
-    if (!response.ok) {
-      throw new Error(result.message || '操作失败');
-    }
-    return result;
-  } catch (error) {
-    throw error;
+  //   if (!response.ok) {
+  //     throw new Error(result.message || '操作失败');
+  //   }
+  //   return result;
+  // } catch (error) {
+  //   throw error;
+  // }
+  try {
+  const response = await fetch(`${API_BASE_URL}${url}`, options);
+  const result = await response.json();
+  
+  if (!response.ok) {
+    throw new Error(result.message || '操作失败');
   }
+  return result;
+} catch (error) {
+  // 添加错误日志（实际业务处理） - 这是关键修改
+  console.error('API 请求失败:', error);
+  throw error; // 重新抛出错误给调用者处理
+}
 }
 
 export const userApi = {

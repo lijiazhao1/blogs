@@ -24,9 +24,9 @@
 
 // export default router
 import { createRouter, createWebHistory } from 'vue-router';
-import Login from '../views/Login.vue';
-import Register from '../views/Register.vue';
-import UserInfo from '../views/UserInfo.vue';
+import Login from '../views/LoginPage.vue';
+import Register from '../views/RegisterPage.vue';
+import UserInfo from '../views/UserInfoPage.vue';
 import { auth } from '../api';
 
 const routes = [
